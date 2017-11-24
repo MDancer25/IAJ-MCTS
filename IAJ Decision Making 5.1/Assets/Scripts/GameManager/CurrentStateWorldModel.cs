@@ -29,8 +29,6 @@ namespace Assets.Scripts.GameManager
         {
             if (propertyName.Equals(Properties.MANA)) return this.GameManager.characterData.Mana;
 
-            if (propertyName.Equals(Properties.MAXMANA)) return this.GameManager.characterData.MaxMana;
-
             if (propertyName.Equals(Properties.XP)) return this.GameManager.characterData.XP;
 
             if (propertyName.Equals(Properties.MAXHP)) return this.GameManager.characterData.MaxHP;
@@ -68,6 +66,11 @@ namespace Assets.Scripts.GameManager
         {
             //in the current state, the next player is always player 0
             return 0;
+        }
+
+        public GameManager GetGameManager()
+        {
+            return this.GameManager;
         }
     }
 }

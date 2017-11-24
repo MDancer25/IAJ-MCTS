@@ -24,9 +24,9 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
         private int CurrentIterationsInFrame { get; set; }
         private int CurrentDepth { get; set; }
 
-        private CurrentStateWorldModel CurrentStateWorldModel { get; set; }
+        protected virtual CurrentStateWorldModel CurrentStateWorldModel { get; set; }
         private MCTSNode InitialNode { get; set; }
-        private System.Random RandomGenerator { get; set; }
+        protected virtual System.Random RandomGenerator { get; set; }
 
         public MCTS(CurrentStateWorldModel currentStateWorldModel)
         {
@@ -130,7 +130,7 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
             return currentNode;
         }
 
-        private Reward Playout(WorldModel initialPlayoutState)
+        protected virtual Reward Playout(WorldModel initialPlayoutState)
         {
             GOB.Action action;
             GOB.Action[] actions;

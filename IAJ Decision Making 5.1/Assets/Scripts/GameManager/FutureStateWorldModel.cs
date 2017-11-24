@@ -34,7 +34,7 @@ namespace Assets.Scripts.GameManager
             float time = (float)this.GetProperty(Properties.TIME);
             int money = (int)this.GetProperty(Properties.MONEY);
 
-            return HP <= 0 ||  time >= 200 || money == 25;
+            return HP <= 0 || time >= 200 || money == 25;
         }
 
         public override float GetScore()
@@ -59,7 +59,7 @@ namespace Assets.Scripts.GameManager
                 score += 3 * money;                                     //cc. -> 0 a 60 pts (3x dinheiro actual)
             }
 
-            if (time < 60.0f)    
+            if (time < 60.0f)
             {
                 score += 50.0f;                                         //menos de 1min -> 50 pts
             }
@@ -73,7 +73,7 @@ namespace Assets.Scripts.GameManager
             {
                 score += 50;                                            //hp maximo -> 50 pts
             }
-            
+
             else
             {
                 score += ((maxhp + hp) / (maxhp - hp) - 1) * level;     //cc. -> 0 a 30 pts (quanto menor a diferença entre maxhp e hp mais pontos se ganha)
@@ -83,7 +83,7 @@ namespace Assets.Scripts.GameManager
 
             score += 10 * level - 10;                                   //0 a 20
             if (hp == 0) score = 0;
-            return score/275;
+            return score / 275;
         }
 
         public override int GetNextPlayer()
@@ -99,13 +99,13 @@ namespace Assets.Scripts.GameManager
             //basically if the character is close enough to an enemy, the next player will be the enemy.
             foreach (var enemy in this.GameManager.enemies)
             {
-                enemyEnabled = (bool) this.GetProperty(enemy.name);
+                enemyEnabled = (bool)this.GetProperty(enemy.name);
                 if (enemyEnabled && (enemy.transform.position - position).sqrMagnitude <= 400)
                 {
                     this.NextPlayer = 1;
                     this.NextEnemyAction = new SwordAttack(this.GameManager.autonomousCharacter, enemy);
                     this.NextEnemyActions = new Action[] { this.NextEnemyAction };
-                    return; 
+                    return;
                 }
             }
             this.NextPlayer = 0;
