@@ -15,6 +15,7 @@ namespace Assets.Scripts.GameManager
         public AutonomousCharacter autonomousCharacter;
 
         public Text HPText;
+        //public Text MaxHPText;
         public Text ManaText;
         public Text TimeText;
         public Text XPText;
@@ -93,6 +94,7 @@ namespace Assets.Scripts.GameManager
             }
 
 
+            //this.MaxHPText.text = "MaxHP: " + this.characterData.MaxHP;
             this.HPText.text = "HP: " + this.characterData.HP;
             this.XPText.text = "XP: " + this.characterData.XP;
             this.LevelText.text = "Level: " + this.characterData.Level;
@@ -134,7 +136,7 @@ namespace Assets.Scripts.GameManager
                     this.characterData.HP -= 20;
                     this.characterData.XP += 20;
                 }
-
+                
                 this.WorldChanged = true;
             }
         }
@@ -156,11 +158,8 @@ namespace Assets.Scripts.GameManager
                     this.enemies.Remove(enemy);
                     GameObject.DestroyObject(enemy);
                 }
-                else if (enemy.tag.Equals("Dragon"))
-                {
-                }
-                this.characterData.Mana -= 5;
 
+                this.characterData.Mana -= 5;
                 this.WorldChanged = true;
             }
         }

@@ -44,46 +44,42 @@ namespace Assets.Scripts.GameManager
             int maxhp = (int)this.GetProperty(Properties.MAXHP);
             int hp = (int)this.GetProperty(Properties.HP);
             int mana = (int)this.GetProperty(Properties.MANA);
-            int maxmana = (int)this.GetProperty(Properties.MAXMANA);
+            //int maxmana = (int)this.GetProperty(Properties.MAXMANA);
             int xp = (int)this.GetProperty(Properties.XP);
             int level = (int)this.GetProperty(Properties.LEVEL);
             float time = (float)this.GetProperty(Properties.TIME);
 
             if (money == 25)
             {
-                score += 100.0f;                                        //dinheiro maximo -> 100 pts
-            }
-
-            else
+                score += 150;                                           //dinheiro maximo -> 100 pts
+            }else
             {
                 score += 3 * money;                                     //cc. -> 0 a 60 pts (3x dinheiro actual)
             }
 
-            if (time < 60.0f)
-            {
-                score += 50.0f;                                         //menos de 1min -> 50 pts
-            }
-
-            else
-            {
-                score += (200 - time) / 5;                             //cc. -> 0 a 28 pts (0.1 por cada segundo a menos de 2min)
-            }
+            //if (time < 60.0f)
+            //{
+            //    score += 50.0f;                                         //menos de 1min -> 50 pts
+            //}else
+            //{
+                score += (200 - time) / 2;                              //cc. -> 0 a 28 pts (0.1 por cada segundo a menos de 2min)
+            //}
 
             if (hp == maxhp)
             {
-                score += 50;                                            //hp maximo -> 50 pts
-            }
-
-            else
+                score += 40;                                            //hp maximo -> 50 pts
+            }else
             {
-                score += ((maxhp + hp) / (maxhp - hp) - 1) * level;     //cc. -> 0 a 30 pts (quanto menor a diferença entre maxhp e hp mais pontos se ganha)
+                score += 20;                                            //cc. -> 0 a 30 pts (quanto menor a diferença entre maxhp e hp mais pontos se ganha)
             }
 
             score += xp;                                                //0 a 30
 
             score += 10 * level - 10;                                   //0 a 20
-            if (hp == 0) score = 0;
-            return score / 275;
+
+            if (hp == 0)
+                score = 0;
+            return score;
         }
 
         public override int GetNextPlayer()

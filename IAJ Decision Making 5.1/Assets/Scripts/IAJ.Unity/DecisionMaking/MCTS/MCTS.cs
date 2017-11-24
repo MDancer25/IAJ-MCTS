@@ -24,7 +24,7 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
         private int CurrentIterationsInFrame { get; set; }
         private int CurrentDepth { get; set; }
 
-        protected virtual CurrentStateWorldModel CurrentStateWorldModel { get; set; }
+        public CurrentStateWorldModel CurrentStateWorldModel { get; set; }
         private MCTSNode InitialNode { get; set; }
         protected virtual System.Random RandomGenerator { get; set; }
 
@@ -73,33 +73,25 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
                 this.CurrentIterationsInFrame++;
                 //this.CurrentIterations++;
             }
-
-            if (this.CurrentIterationsInFrame >= this.MaxIterations)
-            {
-                this.InProgress = false;
-            }
-
+            
+            this.InProgress = false;
             this.BestFirstChild = BestChild(InitialNode);
 
-            this.BestActionSequence.Clear();
-            var auxNode = this.BestFirstChild;
-            while (true)
-            {
-                if (auxNode == null)
-                {
-                    break;
-                }
-                this.BestActionSequence.Add(auxNode.Action);
-                auxNode = BestChild(auxNode);
-            }
-
-            if (this.BestFirstChild == null)
+            if (this.BestFirstChild == null || this.BestFirstChild.Q == 0)
             {
                 return null;
             }
 
-            if (this.BestFirstChild.Q == 0) return null;
-            this.TotalProcessingTime = Time.realtimeSinceStartup - startTime;
+
+            this.BestActionSequence.Clear();
+            var auxNode = this.BestFirstChild;
+            while (auxNode != null)
+            {
+                this.BestActionSequence.Add(auxNode.Action);
+                auxNode = BestChild(auxNode);
+            }
+            
+            this.TotalProcessingTime += Time.realtimeSinceStartup - startTime;
             return this.BestFirstChild.Action;
         }
 
@@ -203,7 +195,6 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
                 {
                     BestUCT = uct;
                     best = currentChild;
-
                 }
             }
             return best;
@@ -223,7 +214,7 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
             {
                 currentChild = children[count];
                 ui = currentChild.Q / currentChild.N;
-                uct = ui; /* + Math.Sqrt(Math.Log(currentChild.Parent.N) / currentChild.N);*/
+                uct = ui / currentChild.N; /* + Math.Sqrt(Math.Log(currentChild.Parent.N) / currentChild.N);*/
                 if (uct > BestUCT)
                 {
                     BestUCT = uct;

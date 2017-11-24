@@ -20,10 +20,6 @@ namespace Assets.Scripts.DecisionMakingActions
             {
                 this.xpChange = 10;
             }
-            else if (target.tag.Equals("Dragon"))
-            {
-                this.xpChange = 15;
-            }
         }
 
 		public override float GetGoalChange(Goal goal)
@@ -40,14 +36,14 @@ namespace Assets.Scripts.DecisionMakingActions
 
 		public override bool CanExecute()
         {
-            return base.CanExecute();
+            return (base.CanExecute() && this.Character.GameManager.characterData.Mana > 0);
         }
 
 		public override bool CanExecute(WorldModel worldModel)
 		{
             //TODO: implement
             //throw new NotImplementedException();
-            return base.CanExecute(worldModel);
+            return (base.CanExecute(worldModel) && (int)worldModel.GetProperty(Properties.MANA) > 0);
         }
 
 		public override void Execute()

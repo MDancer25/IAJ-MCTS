@@ -63,7 +63,7 @@ namespace Assets.Scripts
         private float previousGold = 0.0f;
         private int previousXP = 0;
         private Vector3 previousTarget;
-
+        private LevelUp LevelUp;
 		private Animator characterAnimator;
 
 
@@ -98,13 +98,13 @@ namespace Assets.Scripts
 
             this.GainXPGoal = new Goal(GAIN_XP_GOAL, 1.0f)
             {
-                ChangeRate = 0.1f
+                ChangeRate = 0.5f
             };
 
             this.GetRichGoal = new Goal(GET_RICH_GOAL, 1.0f)
             {
-                InsistenceValue = 5.0f,
-                ChangeRate = 0.2f
+                InsistenceValue = 2.5f,
+                ChangeRate = 0.5f
             };
 
             this.BeQuickGoal = new Goal(BE_QUICK_GOAL, 1.0f)
@@ -121,7 +121,7 @@ namespace Assets.Scripts
             //initialize the available actions
 
             this.Actions = new List<Action>();
-
+            this.LevelUp = new LevelUp(this);
 
             foreach (var chest in GameObject.FindGameObjectsWithTag("Chest"))
             {
@@ -178,14 +178,14 @@ namespace Assets.Scripts
                     this.BeQuickGoal.InsistenceValue = 10.0f;
                 }
 
-                this.GainXPGoal.InsistenceValue += 0.1f; //increase in goal over time
+                this.GainXPGoal.InsistenceValue += this.GainXPGoal.ChangeRate; //increase in goal over time
                 if(this.GameManager.characterData.XP > this.previousXP)
                 {
-                    this.GainXPGoal.InsistenceValue -= this.GameManager.characterData.XP - this.previousXP;
+                    this.GainXPGoal.InsistenceValue -= (this.GameManager.characterData.XP - this.previousXP)/2;
                     this.previousXP = this.GameManager.characterData.XP;
                 }
 
-                this.GetRichGoal.InsistenceValue += 0.1f; //increase in goal over time
+                this.GetRichGoal.InsistenceValue += this.GetRichGoal.ChangeRate; //increase in goal over time
                 if (this.GetRichGoal.InsistenceValue > 10)
                 {
                     this.GetRichGoal.InsistenceValue = 10.0f;
@@ -227,6 +227,11 @@ namespace Assets.Scripts
                 if(this.CurrentAction.CanExecute())
                 {
                     this.CurrentAction.Execute();
+
+                    if (this.CurrentAction.Name.Contains("Fireball") || this.CurrentAction.Name.Contains("SwordAttack"))
+                    {
+                        LevelUp.Execute();
+                    }
                 }
             }
 
@@ -275,6 +280,8 @@ namespace Assets.Scripts
 					if (action != null)
 					{
 						this.CurrentAction = action;
+                    //Debug.Log(this.MCTSDecisionMaking.BestFirstChild.N);
+                    //Debug.Log(this.MCTSDecisionMaking.BestFirstChild.Q);
 					}
 				}
 
