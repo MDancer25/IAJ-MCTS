@@ -1,0 +1,63 @@
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\Assembly-CSharp.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\Assembly-CSharp.pdb
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\Mono.Cecil.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\RAIN.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\RAINMetaform.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\UnityEditor.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\UnityEditor.iOS.Extensions.Xcode.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\UnityEngine.Advertisements.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\UnityEngine.Analytics.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\UnityEngine.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\UnityEngine.Networking.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\UnityEngine.UI.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\Unity.SerializationLogic.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\Unity.DataContract.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\Unity.UNetWeaver.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\Unity.CecilTools.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\UnityEngine.xml
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\UnityEditor.xml
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\UnityEngine.Advertisements.xml
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\UnityEngine.UI.xml
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\UnityEngine.Networking.xml
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\Temp\bin\Debug\UnityEngine.Analytics.xml
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\obj\Debug\Assembly-CSharp.dll
+D:\Aulas IST\IA para jogos\Práticas\Pathfinding\IAJ Pathfinding 4\obj\Debug\Assembly-CSharp.pdb
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\Assembly-CSharp.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\Assembly-CSharp.pdb
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\nunit.framework.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\RAIN.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\RAINMetaform.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEditor.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.Analytics.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.HoloLens.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.Networking.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.TestRunner.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.Timeline.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.UI.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\Mono.Cecil.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\Unity.SerializationLogic.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\Unity.DataContract.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\ExCSS.Unity.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\Unity.Legacy.NRefactory.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\Unity.UNetWeaver.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\Unity.CecilTools.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.xml
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEditor.xml
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.UI.xml
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.Networking.xml
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.TestRunner.xml
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\nunit.framework.xml
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.Timeline.xml
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.Analytics.xml
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\Temp\bin\Debug\UnityEngine.HoloLens.xml
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\obj\Debug\Assembly-CSharp.dll
+D:\IAJ\Proj3 IAJ\IAJ Decision Making 5.1\obj\Debug\Assembly-CSharp.pdb
