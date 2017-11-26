@@ -89,13 +89,12 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
 						+ 1 / CurrentStateWorldModel.GetGoalValue("GainXP") * 1
 						+ CurrentStateWorldModel.GetGoalValue("GetRich") * 2
 						);*/
-
-                    Debug.Log(h);
+                        
 					accumulate += h;
-					interval.Add(accumulate);
+					interval.Add(Math.Pow(Math.E, h/accumulate));
 				}
 		
-				random = RandomGenerator.NextDouble() * accumulate;
+				random = RandomGenerator.NextDouble() * Math.Pow(Math.E, h / accumulate);
 				for (int j = 0; j < interval.Count; j++)
 				{
 					if (random <= interval[j])
