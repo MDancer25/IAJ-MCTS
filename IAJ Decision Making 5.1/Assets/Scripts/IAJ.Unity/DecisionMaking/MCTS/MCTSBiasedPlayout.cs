@@ -30,7 +30,6 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
             List<double> interval = new List<double>();
             WalkToTargetAndExecuteAction wa;
 
-            int rand;
 			actions = current.GetExecutableActions();
 			if (actions.Length == 0)
 			{
@@ -58,13 +57,13 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
 
 					if (a.Name.Contains("GetH"))
 					{
-						h = (character.MaxHP - character.HP) * 2.5f;                         //0-25
+						h = (character.MaxHP - character.HP) * 2.5f;                            //0-25
 					}
-					else if (a.Name.Contains("Pi"))           //5-25
+					else if (a.Name.Contains("Pi"))                                             //5-25
 					{
 						h = (character.Money + 5) * 2.5f;
 					}
-					else if (a.Name.Contains("FireballS") || a.Name.Contains("FireballO"))    //0-25
+					else if (a.Name.Contains("FireballS") || a.Name.Contains("FireballO"))      //0-25
 					{
 						h = character.Mana;
 					}
@@ -83,12 +82,6 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
 
 
                     h = h * 1000 / euclidean;
-					/*var heuristic = Math.Pow(Math.E,
-						CurrentStateWorldModel.GetGoalValue("BeQuick") * 2
-						+ CurrentStateWorldModel.GetGoalValue("Survive") * 2
-						+ 1 / CurrentStateWorldModel.GetGoalValue("GainXP") * 1
-						+ CurrentStateWorldModel.GetGoalValue("GetRich") * 2
-						);*/
                         
 					accumulate += h;
 					interval.Add(Math.Pow(Math.E, h/accumulate));

@@ -274,36 +274,30 @@ namespace Assets.Scripts
 
         private void UpdateMCTS()
         {
-			//if (this.MCTSDecisionMaking != null)
-			//{
-				if (this.MCTSDecisionMaking.InProgress)
+			if (this.MCTSDecisionMaking.InProgress)
+			{
+                var action = this.MCTSDecisionMaking.Run();
+				if (action != null)
 				{
-					//choose an action using the GOB Decision Making process
-                    var action = this.MCTSDecisionMaking.Run();
-					if (action != null)
-					{
-						this.CurrentAction = action;
-                    //Debug.Log(this.MCTSDecisionMaking.BestFirstChild.N);
-                    //Debug.Log(this.MCTSDecisionMaking.BestFirstChild.Q);
-					}
+					this.CurrentAction = action;
 				}
+			}
 
-				this.TotalProcessingTimeText.text = "Process. Time: " + this.MCTSDecisionMaking.TotalProcessingTime.ToString("F");
+			this.TotalProcessingTimeText.text = "Process. Time: " + this.MCTSDecisionMaking.TotalProcessingTime.ToString("F");
 				
-                if (this.MCTSDecisionMaking.BestFirstChild != null)
-				{
-					var actionText = "";
-                    foreach (var action in this.MCTSDecisionMaking.BestActionSequence)
-                    {
-                        actionText += "\n" + action.Name;
-                    }
-                this.BestActionText.text = "Best Action Sequence: " + actionText;
-				}
-				else
-				{
-					this.BestActionText.text = "Best Action Sequence:\nNone";
-				}
-			//}
+            if (this.MCTSDecisionMaking.BestFirstChild != null)
+			{
+				var actionText = "";
+                foreach (var action in this.MCTSDecisionMaking.BestActionSequence)
+                {
+                    actionText += "\n" + action.Name;
+                }
+            this.BestActionText.text = "Best Action Sequence: " + actionText;
+			}
+			else
+			{
+				this.BestActionText.text = "Best Action Sequence:\nNone";
+			}
 		}
 
         private void UpdateDLGOAP()
