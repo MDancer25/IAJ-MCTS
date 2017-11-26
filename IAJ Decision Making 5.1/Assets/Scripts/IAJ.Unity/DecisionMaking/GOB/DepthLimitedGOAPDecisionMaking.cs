@@ -74,7 +74,7 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.GOB
                     }
                     CurrentDepth -= 1;
                     processedActions += 1;
-                    this.TotalActionCombinationsProcessed = processedActions;
+                    this.TotalActionCombinationsProcessed += processedActions;
                     continue;
                 }
 

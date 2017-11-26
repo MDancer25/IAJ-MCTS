@@ -7,9 +7,9 @@ namespace Assets.Scripts.DecisionMakingActions
 {
     public abstract class WalkToTargetAndExecuteAction : Action
     {
-        protected AutonomousCharacter Character { get; set; }
+        public AutonomousCharacter Character { get; set; }
 
-        protected GameObject Target { get; set; }
+        public GameObject Target { get; set; }
 
         protected WalkToTargetAndExecuteAction(string actionName, AutonomousCharacter character, GameObject target) : base(actionName + "(" + target.name + ")")
         {

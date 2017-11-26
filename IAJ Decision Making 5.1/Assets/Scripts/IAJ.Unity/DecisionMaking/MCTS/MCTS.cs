@@ -155,7 +155,7 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
             while (node != null)
             {
                 node.N++;
-                node.Q += reward.Value;
+                node.Q += reward.Value; //.getRewardForNode(node);
                 node = node.Parent;
             }
         }
