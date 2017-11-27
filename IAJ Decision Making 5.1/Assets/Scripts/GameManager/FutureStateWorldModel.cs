@@ -51,35 +51,42 @@ namespace Assets.Scripts.GameManager
 
             if (money == 25)
             {
-                score += 150;                                           //dinheiro maximo -> 100 pts
+                score += 250;                                           //dinheiro maximo -> 450 pts
             }else
             {
-                score += 3 * money;                                     //cc. -> 0 a 60 pts (3x dinheiro actual)
+                score += money;                                      //0 a 150 pts (3x dinheiro actual)
             }
 
             //if (time < 60.0f)
             //{
-            //    score += 50.0f;                                         //menos de 1min -> 50 pts
+            //    score += 50.0f;                                       //menos de 1min -> 50 pts
             //}else
             //{
-                score += (200 - time) / 2;                              //cc. -> 0 a 28 pts (0.1 por cada segundo a menos de 2min)
+                score += (200 - time);                                  //0 a 200 pts (0.1 por cada segundo a menos de 2min)
             //}
 
             if (hp == maxhp)
             {
-                score += 40;                                            //hp maximo -> 50 pts
+                score += 400;                                           //500 pts
             }else
             {
-                score += 20;                                            //cc. -> 0 a 30 pts (quanto menor a diferença entre maxhp e hp mais pontos se ganha)
+                score += 250;                                           //400 pts (quanto menor a diferença entre maxhp e hp mais pontos se ganha)
             }
 
-            score += xp;                                                //0 a 30
+            //score += 5*xp;                                            //0 a 150
 
-            score += 10 * level - 10;                                   //0 a 20
+
+            if (xp - maxhp >= 0)                                        //0 a 200
+                score += 10;
+            
+            else
+            {
+                score += 75*(level-1);
+            }
 
             if (hp == 0)
                 score = 0;
-            return score;
+            return score/10;
         }
 
         public override int GetNextPlayer()

@@ -149,17 +149,27 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
 
         private void Backpropagate(MCTSNode node, Reward reward)
         {
+            int i = 1;
             while (node != null)
             {
+                i--;
                 node.N++;
 
-                //if (node.Parent.PlayerID == reward.PlayerID || node.Parent == null) {
+                if (node.Parent == null || node.Parent.PlayerID == reward.PlayerID)
+                {
                     node.Q += reward.Value;
-                //}
-               // else {
-                 //   node.Q -= reward.Value;
-                //}
+                }
+                else
+                {
+                    node.Q -= reward.Value;
+                }
                 node = node.Parent;
+                //if(node != null)
+                //{
+                //    Debug.Log("-------------acção escolhida------------");
+                //    Debug.Log(node.Q);
+                //    Debug.Log("----------------------------------------");
+                //}
             }
         }
 
@@ -216,8 +226,20 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
             for (int count = 0; count < children.Count; count++)
             {
                 currentChild = children[count];
-                ui = currentChild.Q / currentChild.N;
-                uct = ui / currentChild.N; /* + Math.Sqrt(Math.Log(currentChild.Parent.N) / currentChild.N);*/
+                ui = currentChild.Q / (currentChild.N);
+                uct = ui * 20/ currentChild.N;
+                /*Debug.Log("-----------Q---------");
+                Debug.Log(currentChild.Q);
+                Debug.Log("-------------------------");
+                Debug.Log("-----------UCT---------");
+                Debug.Log(uct);
+                Debug.Log("-------------------------");
+                Debug.Log("---------UI-------");
+                Debug.Log(ui);
+                Debug.Log("-------------------------");
+                Debug.Log("---------SQUIRT--------");
+                Debug.Log(20 / Math.Sqrt(currentChild.N));
+                Debug.Log("-------------------------");*/
                 if (uct > BestUCT)
                 {
                     BestUCT = uct;

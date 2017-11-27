@@ -25,7 +25,7 @@ namespace Assets.Scripts
         public const string BE_QUICK_GOAL = "BeQuick";
         public const string GET_RICH_GOAL = "GetRich";
 
-        public const float DECISION_MAKING_INTERVAL = 10.0f;
+        public const float DECISION_MAKING_INTERVAL = 20.0f;
         //public fields to be set in Unity Editor
         public GameManager.GameManager GameManager;
         public Text SurviveGoalText;
@@ -122,7 +122,6 @@ namespace Assets.Scripts
             //initialize the available actions
 
             this.Actions = new List<Action>();
-            this.LevelUp = new LevelUp(this);
 
             foreach (var chest in GameObject.FindGameObjectsWithTag("Chest"))
             {
@@ -157,6 +156,8 @@ namespace Assets.Scripts
                 this.Actions.Add(new Fireball(this, enemy));
             }
 
+            this.Actions.Add(new LevelUp(this));
+
             var worldModel = new CurrentStateWorldModel(this.GameManager, this.Actions, this.Goals);
             this.GOAPDecisionMaking = new DepthLimitedGOAPDecisionMaking(worldModel,this.Actions,this.Goals);
 			//this.MCTSDecisionMaking = new MCTS(worldModel);
@@ -177,7 +178,6 @@ namespace Assets.Scripts
                 }
                 if(this.MCTSDecisionMaking.BestActionSequence != null)
                     this.MCTSDecisionMaking.BestActionSequence.Clear();
-                currentaction = 0;
                 //first step, perceptions
                 //update the agent's goals based on the state of the world
                 this.SurviveGoal.InsistenceValue = this.GameManager.characterData.MaxHP - this.GameManager.characterData.HP;
@@ -234,13 +234,9 @@ namespace Assets.Scripts
 
             if(this.CurrentAction != null)
             {
-                if(this.CurrentAction.CanExecute())
+                if (this.CurrentAction.CanExecute())
                 {
                     this.CurrentAction.Execute();
-                    if (this.CurrentAction.Name.Contains("Fireball") || this.CurrentAction.Name.Contains("SwordAttack"))
-                    {
-                        LevelUp.Execute();
-                    }
                 }
             }
 
@@ -286,7 +282,10 @@ namespace Assets.Scripts
 				if (action != null)
 				{
 					this.CurrentAction = action;
-				}
+                    /*Debug.Log("---------CURRENT ACTION-------");
+                    Debug.Log(this.CurrentAction);
+                    Debug.Log("------------------------------");*/
+                }
 			}
 
 			this.TotalProcessingTimeText.text = "Process. Time: " + this.MCTSDecisionMaking.TotalProcessingTime.ToString("F");
