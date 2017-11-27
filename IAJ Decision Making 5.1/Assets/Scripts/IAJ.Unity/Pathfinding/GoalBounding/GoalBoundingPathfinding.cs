@@ -19,7 +19,6 @@ namespace Assets.Scripts.IAJ.Unity.Pathfinding.GoalBounding
         public GoalBoundingPathfinding(NavMeshPathGraph graph, IHeuristic heuristic, GoalBoundingTable goalBoundsTable) : base(graph, heuristic)
         {
             this.GoalBoundingTable = goalBoundsTable;
-            Debug.Log(this.GoalBoundingTable);
             dikjstra = new GoalBoundsDijkstraMapFlooding(graph);
         }
 

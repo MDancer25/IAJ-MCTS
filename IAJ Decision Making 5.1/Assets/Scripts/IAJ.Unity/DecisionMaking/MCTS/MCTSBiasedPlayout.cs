@@ -27,10 +27,10 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
             float h = 0;
             double accumulate = 0;
             float euclidean = 0;
+            double softmax = 0;
             List<double> interval = new List<double>();
             WalkToTargetAndExecuteAction wa;
-
-            int rand;
+            
 			actions = current.GetExecutableActions();
 			if (actions.Length == 0)
 			{
@@ -56,27 +56,27 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
 						euclidean = (wa.Target.transform.position - wa.Character.transform.position).magnitude;
 					}
 
-					if (a.Name.Contains("GetH"))
-					{
-						h = (character.MaxHP - character.HP) * 2.5f;                         //0-25
+					if (a.Name.Contains("GetHealthPotion"))                                              //0-25
+                    {                                                                                    
+                        h = (character.MaxHP - character.HP) * 5.5f;                                     
 					}
-					else if (a.Name.Contains("Pi"))           //5-25
+					else if (a.Name.Contains("PickUpChest"))                                             //5-25
 					{
-						h = (character.Money + 5) * 2.5f;
+						h = (character.Money + 5) * 3.5f;
 					}
-					else if (a.Name.Contains("FireballS") || a.Name.Contains("FireballO"))    //0-25
+					else if (a.Name.Contains("FireballSkeleton") || a.Name.Contains("FireballOrc"))      //0-25
 					{
-						h = character.Mana;
+						h = character.Mana*3;
 					}
-					else if (a.Name.Contains("SwordAttackS"))
+					else if (a.Name.Contains("SwordAttackSkeleton"))
 					{
-						h = character.HP - 5;
+						h = (character.HP - 5)*2;
 					}
-					else if (a.Name.Contains("SwordAttackO"))
+					else if (a.Name.Contains("SwordAttackOrc"))
 					{
-						h = character.HP - 10;
+						h = (character.HP - 10)*2;
 					}
-					else if (a.Name.Contains("SwordAttackD"))
+					else if (a.Name.Contains("SwordAttackDragon"))
 					{
 						h = character.HP - 20;
 					}
@@ -91,10 +91,18 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
 						);*/
                         
 					accumulate += h;
-					interval.Add(Math.Pow(Math.E, h/accumulate));
+                    if (h > 0)
+                    {
+                        softmax = Math.Pow(Math.E, h / accumulate);
+                        interval.Add(softmax);
+                    }
+                    else
+                    {
+                        interval.Add(0);
+                    }
 				}
-		
-				random = RandomGenerator.NextDouble() * Math.Pow(Math.E, h / accumulate);
+
+                random = RandomGenerator.NextDouble() * softmax;
 				for (int j = 0; j < interval.Count; j++)
 				{
 					if (random <= interval[j])

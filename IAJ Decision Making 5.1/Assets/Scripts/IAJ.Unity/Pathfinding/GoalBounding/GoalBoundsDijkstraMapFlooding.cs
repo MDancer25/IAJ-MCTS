@@ -78,8 +78,7 @@ namespace Assets.Scripts.IAJ.Unity.Pathfinding.GoalBounding
         {
             NavigationGraphNode childNode = connectionEdge.ToNode;
             var childNodeRecord = this.NodeRecordArray.GetNodeRecord(childNode);
-
-            //UnityEngine.Debug.Log("connectionIndex: "+ connectionIndex);
+            
             var open = Open.SearchInOpen(childNodeRecord);
             var close = Closed.SearchInClosed(childNodeRecord);
             if (open == null && close == null)
@@ -87,12 +86,10 @@ namespace Assets.Scripts.IAJ.Unity.Pathfinding.GoalBounding
                 float g = parent.gValue + (childNodeRecord.node.LocalPosition - parent.node.LocalPosition).magnitude;
 
                 UpdateNode(parent, childNodeRecord, g, 0, g, connectionIndex);
-                //UnityEngine.Debug.Log("Morri por dentro: "+ childNodeRecord.StartNodeOutConnectionIndex);
                 Open.AddToOpen(childNodeRecord);
             }
             else if (open != null)
             {
-                //UnityEngine.Debug.Log("Nunca entro aqui.");
                 var g = parent.gValue + (childNodeRecord.node.LocalPosition - parent.node.LocalPosition).magnitude;
 
                 if (g < childNodeRecord.gValue)

@@ -32,7 +32,7 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
         {
             this.InProgress = false;
             this.CurrentStateWorldModel = currentStateWorldModel;
-            this.MaxIterations = 100;
+            this.MaxIterations = 15000;
             this.MaxIterationsProcessedPerFrame = 10;
             this.RandomGenerator = new System.Random();
         }
@@ -81,17 +81,14 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
             {
                 return null;
             }
-
-
-            this.BestActionSequence.Clear();
-            var auxNode = this.BestFirstChild;
-            while (auxNode != null)
-            {
-                this.BestActionSequence.Add(auxNode.Action);
-                auxNode = BestChild(auxNode);
-            }
             
             this.TotalProcessingTime += Time.realtimeSinceStartup - startTime;
+            var bestchild = this.BestFirstChild;
+            while (bestchild != null)
+            {
+                this.BestActionSequence.Add(bestchild.Action);
+                bestchild = BestChild(bestchild);
+            }
             return this.BestFirstChild.Action;
         }
 
@@ -155,7 +152,13 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
             while (node != null)
             {
                 node.N++;
-                node.Q += reward.Value; //.getRewardForNode(node);
+                
+                /*if (node.Parent == null || node.Parent.PlayerID == reward.PlayerID)
+                {*/
+                    node.Q += reward.Value;
+                /*}else {
+                    node.Q -= reward.Value; //.getRewardForNode(node);
+                }*/
                 node = node.Parent;
             }
         }
@@ -202,7 +205,7 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
 
         //this method is very similar to the bestUCTChild, but it is used to return the final action of the MCTS search, and so we do not care about
         //the exploration factor
-        private MCTSNode BestChild(MCTSNode node)
+        public MCTSNode BestChild(MCTSNode node)
         {
             List<MCTSNode> children = node.ChildNodes;
             MCTSNode best, currentChild;

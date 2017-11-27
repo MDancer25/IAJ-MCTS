@@ -51,6 +51,7 @@ namespace Assets.Scripts
         public AStarPathfinding AStarPathFinding;
         public GoalBoundingTable goalBoundsTable;
         public MCTS MCTSDecisionMaking { get; set; }
+        public int currentaction = 0;
 
         //private fields for internal use only
         private Vector3 startPosition;
@@ -169,8 +170,14 @@ namespace Assets.Scripts
             if (Time.time > this.nextUpdateTime || this.GameManager.WorldChanged)
             {
                 this.GameManager.WorldChanged = false;
-                this.nextUpdateTime = Time.time + DECISION_MAKING_INTERVAL;
-
+                if (this.MCTSDecisionMaking.BestActionSequence == null){
+                    this.nextUpdateTime = Time.time;
+                }else{
+                    this.nextUpdateTime = Time.time + DECISION_MAKING_INTERVAL;
+                }
+                if(this.MCTSDecisionMaking.BestActionSequence != null)
+                    this.MCTSDecisionMaking.BestActionSequence.Clear();
+                currentaction = 0;
                 //first step, perceptions
                 //update the agent's goals based on the state of the world
                 this.SurviveGoal.InsistenceValue = this.GameManager.characterData.MaxHP - this.GameManager.characterData.HP;
@@ -230,7 +237,6 @@ namespace Assets.Scripts
                 if(this.CurrentAction.CanExecute())
                 {
                     this.CurrentAction.Execute();
-
                     if (this.CurrentAction.Name.Contains("Fireball") || this.CurrentAction.Name.Contains("SwordAttack"))
                     {
                         LevelUp.Execute();
@@ -291,13 +297,21 @@ namespace Assets.Scripts
 				this.TotalProcessingTimeText.text = "Process. Time: " + this.MCTSDecisionMaking.TotalProcessingTime.ToString("F");
 				
                 if (this.MCTSDecisionMaking.BestFirstChild != null)
-				{
-					var actionText = "";
+                {
+                    /*var auxNode = this.MCTSDecisionMaking.BestFirstChild;
+                    while (auxNode != null)
+                    {
+                        this.MCTSDecisionMaking.BestActionSequence.Add(auxNode.Action);
+                        auxNode = this.MCTSDecisionMaking.BestChild(auxNode);
+                    }*/
+
+                    var actionText = "";
                     foreach (var action in this.MCTSDecisionMaking.BestActionSequence)
                     {
                         actionText += "\n" + action.Name;
                     }
-                this.BestActionText.text = "Best Action Sequence: " + actionText;
+                    currentaction = this.MCTSDecisionMaking.BestActionSequence.Count;
+                    this.BestActionText.text = "Best Action Sequence: " + actionText;
 				}
 				else
 				{
