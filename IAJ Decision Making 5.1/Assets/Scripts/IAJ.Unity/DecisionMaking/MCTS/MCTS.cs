@@ -152,13 +152,13 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
             while (node != null)
             {
                 node.N++;
-                
-                /*if (node.Parent == null || node.Parent.PlayerID == reward.PlayerID)
-                {*/
+
+                //if (node.Parent.PlayerID == reward.PlayerID || node.Parent == null) {
                     node.Q += reward.Value;
-                /*}else {
-                    node.Q -= reward.Value; //.getRewardForNode(node);
-                }*/
+                //}
+               // else {
+                 //   node.Q -= reward.Value;
+                //}
                 node = node.Parent;
             }
         }

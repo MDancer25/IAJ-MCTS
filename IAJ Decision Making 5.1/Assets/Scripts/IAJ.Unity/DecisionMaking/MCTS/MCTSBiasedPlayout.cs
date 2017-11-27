@@ -30,7 +30,6 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
             double softmax = 0;
             List<double> interval = new List<double>();
             WalkToTargetAndExecuteAction wa;
-            
 			actions = current.GetExecutableActions();
 			if (actions.Length == 0)
 			{
@@ -56,13 +55,13 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
 						euclidean = (wa.Target.transform.position - wa.Character.transform.position).magnitude;
 					}
 
-					if (a.Name.Contains("GetHealthPotion"))                                              //0-25
-                    {                                                                                    
-                        h = (character.MaxHP - character.HP) * 5.5f;                                     
-					}
-					else if (a.Name.Contains("PickUpChest"))                                             //5-25
+					if (a.Name.Contains("GetHealthPotion")) 
 					{
-						h = (character.Money + 5) * 3.5f;
+						h = (character.MaxHP - character.HP) * 2.5f;                            //0-25
+					}
+					else if (a.Name.Contains("PickUpChest"))                                            //5-25
+                    {
+                        h = (character.Money + 5) * 3.5f;
 					}
 					else if (a.Name.Contains("FireballSkeleton") || a.Name.Contains("FireballOrc"))      //0-25
 					{
@@ -83,12 +82,6 @@ namespace Assets.Scripts.IAJ.Unity.DecisionMaking.MCTS
 
 
                     h = h * 1000 / euclidean;
-					/*var heuristic = Math.Pow(Math.E,
-						CurrentStateWorldModel.GetGoalValue("BeQuick") * 2
-						+ CurrentStateWorldModel.GetGoalValue("Survive") * 2
-						+ 1 / CurrentStateWorldModel.GetGoalValue("GainXP") * 1
-						+ CurrentStateWorldModel.GetGoalValue("GetRich") * 2
-						);*/
                         
 					accumulate += h;
                     if (h > 0)
